@@ -6,6 +6,12 @@ const GithubIcon = ({ size = 14 }: { size?: number }) => (
   </svg>
 );
 
+const XIcon = ({ size = 14 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.745l7.73-8.835L1.254 2.25H8.08l4.261 5.634 5.903-5.634zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+  </svg>
+);
+
 export default function Footer() {
   return (
     <footer className="border-t border-white/5 bg-[#040404] px-6 py-10">
@@ -30,6 +36,15 @@ export default function Footer() {
           >
             Polymarket
             <ExternalLink size={9} />
+          </a>
+          <a
+            href="https://x.com/PolySearch0x"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 text-[10px] text-white/25 hover:text-white/50 transition-colors tracking-widest uppercase"
+          >
+            <XIcon size={10} />
+            Twitter
           </a>
           <a
             href="https://github.com/cyber-dev0x/polymarket-search"
