@@ -3,15 +3,15 @@
 import { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import { Search, ArrowRight } from "lucide-react";
+import ErrorBoundary from "./ErrorBoundary";
 
-const Spline = dynamic(() => import("@splinetool/react-spline"), {
-  ssr: false,
-  loading: () => (
-    <div className="w-full h-full flex items-center justify-center">
-      <div className="text-white/10 text-xs tracking-widest uppercase">Loading scene...</div>
-    </div>
-  ),
-});
+const Spline = dynamic(
+  () => import("@splinetool/react-spline").catch(() => ({ default: () => null })),
+  {
+    ssr: false,
+    loading: () => null,
+  }
+);
 
 const HEADLINES = [
   "Markets move fast.",
@@ -51,16 +51,6 @@ export default function HeroSection() {
     return () => clearTimeout(timeout);
   }, [displayText, isDeleting, headlineIndex]);
 
-  // Parallax on cursor
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!splineRef.current) return;
-      // Spline handles its own camera — we just track for potential overlay parallax
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
-
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (query.trim()) {
@@ -95,13 +85,15 @@ export default function HeroSection() {
           className="w-full h-full transition-opacity duration-1000"
           style={{ opacity: splineLoaded ? 1 : 0 }}
         >
-          <Spline
-            scene="https://prod.spline.design/koenigseggjesko-eCdQwMXKCxfd7e5SOq7Fn2G0/scene.splinecode"
-            onLoad={(spline) => {
-              splineRef.current = spline;
-              setSplineLoaded(true);
-            }}
-          />
+          <ErrorBoundary>
+            <Spline
+              scene="https://prod.spline.design/koenigseggjesko-eCdQwMXKCxfd7e5SOq7Fn2G0/scene.splinecode"
+              onLoad={(spline: unknown) => {
+                splineRef.current = spline;
+                setSplineLoaded(true);
+              }}
+            />
+          </ErrorBoundary>
         </div>
       </div>
 
