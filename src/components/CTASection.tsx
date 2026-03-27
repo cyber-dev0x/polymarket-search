@@ -70,7 +70,7 @@ export default function CTASection() {
             </a>
 
             <a
-              href="https://github.com/dmitriidiagilev/polymarket-search"
+              href="https://github.com/cyber-dev0x/polymarket-search"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-3 px-8 py-4 border border-white/15 text-white/60 text-sm tracking-widest uppercase hover:border-white/30 hover:text-white/80 transition-all"

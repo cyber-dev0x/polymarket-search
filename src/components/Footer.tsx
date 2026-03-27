@@ -32,7 +32,7 @@ export default function Footer() {
             <ExternalLink size={9} />
           </a>
           <a
-            href="https://github.com/dmitriidiagilev/polymarket-search"
+            href="https://github.com/cyber-dev0x/polymarket-search"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 text-[10px] text-white/25 hover:text-white/50 transition-colors tracking-widest uppercase"

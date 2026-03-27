@@ -58,7 +58,7 @@ export default function Navbar() {
         {/* Right side */}
         <div className="flex items-center gap-4">
           <a
-            href="https://github.com/dmitriidiagilev/polymarket-search"
+            href="https://github.com/cyber-dev0x/polymarket-search"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 text-xs text-white/40 hover:text-white/70 transition-colors"
